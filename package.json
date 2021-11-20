@@ -16,14 +16,18 @@
     "prepublishOnly": "npm run prettier && npm run build && npm version patch"
   },
   "keywords": [
-    "CurseForge",
-    "Minecraft",
-    "API"
+    "curseforge",
+    "curseforge-api",
+    "minecraft",
+    "api"
   ],
   "author": "KaninchenSpeed",
   "license": "GPL-3.0",
   "devDependencies": {
     "prettier": "^2.4.1",
     "typescript": "^4.5.2"
+  },
+  "dependencies": {
+    "axios": "^0.24.0"
   }
 }
