@@ -1,4 +1,4 @@
-
+import request from '../lib/APIrequest'
 
 export interface FileHash {
     value: string
@@ -61,6 +61,72 @@ export default class Files {
      */
     constructor(api_key: string) {
         this.api_key = api_key
+    }
+
+    /**
+     * Get a single file of the specified mod.
+     * 
+     * @param modID The mod id
+     * @param fileID The file id
+     */
+    async getModFile(modID: number, fileID: number) {
+        const res = await request<File>(`/mods/${modID}/files/${fileID}`, { api_key: this.api_key })
+        if (res.status == 500) throw 'Internal Server Error'
+        if (res.status == 404) throw 'Not Found'
+        return res.data.data
+    }
+
+    /**
+     * Get all files of the specified mod.
+     * 
+     * @param modID The mod id
+     */
+    async getModFiles(modID: number) {
+        const res = await request<File[]>(`/mods/${modID}/files`, { api_key: this.api_key })
+        if (res.status == 500) throw 'Internal Server Error'
+        if (res.status == 404) throw 'Not Found'
+        return res.data.data
+    }
+
+    /**
+     * Get a list of files.
+     * 
+     * @param fileIDs The file ids
+     */
+    async getFiles(...fileIDs: number[]) {
+        const res = await request<File[]>('/mods/files', { api_key: this.api_key, body: {
+            fileIds: fileIDs
+        }})
+        if (res.status == 500) throw 'Internal Server Error'
+        if (res.status == 404) throw 'Not Found'
+        if (res.status == 400) throw 'Bad Request'
+        return res.data.data
+    }
+
+    /**
+     * Get the changelog of a file in HTML format.
+     * 
+     * @param modID The mod id
+     * @param fileID The file id
+     */
+    async getFileChangelog(modID: number, fileID: number) {
+        const res = await request<string>(`/mods/${modID}/files/${fileID}/changelog`)
+        if (res.status == 500) throw 'Internal Server Error'
+        if (res.status == 404) throw 'Not Found'
+        return res.data.data
+    }
+
+    /**
+     * Get a download url for a specific file.
+     * 
+     * @param modID The mod id
+     * @param fileID The file id
+     */
+    async getFileDownloadURL(modID: number, fileID: number) {
+        const res = await request<string>(`/mods/${modID}/files/${fileID}/download-url`)
+        if (res.status == 500) throw 'Internal Server Error'
+        if (res.status == 404) throw 'Not Found'
+        return res.data.data
     }
 
 }
