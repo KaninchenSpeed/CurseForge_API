@@ -1,7 +1,7 @@
 import request from '../lib/APIrequest'
 import type { Pagination } from '../lib/APIrequest'
 
-interface Game {
+export interface Game {
     id: number,
     name: string,
     slug: string,
@@ -15,12 +15,12 @@ interface Game {
     apiStatus: number
 }
 
-interface GameVersion {
+export interface GameVersion {
     type: number
     versions: string[]
 }
 
-interface GameVersionType {
+export interface GameVersionType {
     id: number,
     gameId: number,
     name: string,
