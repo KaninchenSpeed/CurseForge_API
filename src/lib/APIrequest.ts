@@ -1,18 +1,20 @@
 import axios from 'axios'
 import { API_ROOT, VERSION_PREFIX } from './api'
 
-interface RequestOptions {
+export interface RequestOptions {
     api_key?: string
 }
 
-interface Response<DataType> {
+export interface Pagination {
+    index: number
+    pageSize: number
+    resultCount: number
+    totalCount: number
+}
+
+export interface Response<DataType> {
     data: DataType
-    pagination?: {
-        index: number
-        pageSize: number
-        resultCount: number
-        totalCount: number
-    }
+    pagination?: Pagination
 }
 
 /**
