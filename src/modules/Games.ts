@@ -2,16 +2,16 @@ import request from '../lib/APIrequest'
 import type { Pagination } from '../lib/APIrequest'
 
 export interface Game {
-    id: number,
-    name: string,
-    slug: string,
-    dateModified: string,
+    id: number
+    name: string
+    slug: string
+    dateModified: string
     assets: {
-        iconUrl: string,
-        tileUrl: string,
+        iconUrl: string
+        tileUrl: string
         coverUrl: string
-    },
-    status: number,
+    }
+    status: number
     apiStatus: number
 }
 
@@ -21,15 +21,15 @@ export interface GameVersion {
 }
 
 export interface GameVersionType {
-    id: number,
-    gameId: number,
-    name: string,
+    id: number
+    gameId: number
+    name: string
     slug: string
 }
 
 export default class Games {
 
-    private api_key
+    private api_key: string
 
     /**
      * 
