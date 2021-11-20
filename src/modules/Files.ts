@@ -110,7 +110,7 @@ export default class Files {
      * @param fileID The file id
      */
     async getFileChangelog(modID: number, fileID: number) {
-        const res = await request<string>(`/mods/${modID}/files/${fileID}/changelog`)
+        const res = await request<string>(`/mods/${modID}/files/${fileID}/changelog`, { api_key: this.api_key })
         if (res.status == 500) throw 'Internal Server Error'
         if (res.status == 404) throw 'Not Found'
         return res.data.data
@@ -123,7 +123,7 @@ export default class Files {
      * @param fileID The file id
      */
     async getFileDownloadURL(modID: number, fileID: number) {
-        const res = await request<string>(`/mods/${modID}/files/${fileID}/download-url`)
+        const res = await request<string>(`/mods/${modID}/files/${fileID}/download-url`, { api_key: this.api_key })
         if (res.status == 500) throw 'Internal Server Error'
         if (res.status == 404) throw 'Not Found'
         return res.data.data

@@ -135,7 +135,7 @@ export default class Mods {
      * @param modID The mod id
      */
     async getModDescription(modID: number) {
-        const res = await request<string>(`/mods/${modID}/description`)
+        const res = await request<string>(`/mods/${modID}/description`, { api_key: this.api_key })
         if (res.status == 500) throw 'Internal Server Error'
         if (res.status == 404) throw 'Not Found'
         return res.data.data
