@@ -1,6 +1,6 @@
 {
   "name": "curseforge_api_bindings",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Unofficial Curse Forge API Bindings",
   "main": "dist/cjs/main.js",
   "module": "dist/esm/main.js",
